@@ -1,0 +1,28 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Secure Pass Vault</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Vault</h2>
+        <form method="post" action="/add">
+            <input type="text" name="site" placeholder="Site" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="password" placeholder="Password" required>
+            <button type="submit">Add</button>
+        </form>
+        <hr>
+        {% for item in creds %}
+            <div class="entry">
+                <strong>{{ item.site }}</strong><br>
+                {{ item.username }} | {{ item.password }}
+            </div>
+        {% endfor %}
+        <hr>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
